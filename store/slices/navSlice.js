@@ -13,7 +13,7 @@ export const navSlice = createSlice({
         setOrigin: (state, action) => {
             state.origin = action.payload;
         },
-        setDestinations: (state, action) => {
+        setDestination: (state, action) => {
             state.destination = action.payload;
         },
         setTravelTimeInformation: (state, action) => {
@@ -22,7 +22,7 @@ export const navSlice = createSlice({
     }
 });
 
-export const { setOrigin, setDestinations, setTravelTimeInformation } = navSlice.actions;
+export const { setOrigin, setDestination, setTravelTimeInformation } = navSlice.actions;
 
 //Selectors
 export const selectOrigin = (state) => state.nav.origin;
