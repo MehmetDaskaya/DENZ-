@@ -33,7 +33,7 @@ const data=[
     }
     renderItem={({item}) => (
         <TouchableOpacity style={styles.button} >
-            <Ionicons style={styles.icon} name={item.icon} size={18} color="white"/>
+            <Ionicons style={styles.icon} name={item.icon} size={14} color="white"/>
             <View style={styles.textContainer}>
               <Text style={styles.text}>{item.location}</Text>
               <Text>{item.destination}</Text>
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   icon:{
     backgroundColor: "grey",
-    padding:12,
+    padding:8,
     borderRadius: 50,
     alignSelf: "center",
   },

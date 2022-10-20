@@ -5,7 +5,9 @@ import NavOptions from '../components/NavOptions';
 import { GOOGLE_MAPS_APIKEY } from '@env';
 import { useDispatch } from 'react-redux';
 import { setDestination, setOrigin } from '../store/slices/navSlice';
+
 import NavFavourites from '../components/NavFavourites';
+import Logo from '../components/Logo';
 
 
 
@@ -15,14 +17,9 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <View>
-        <Image source={{
-          uri: "https://raw.githubusercontent.com/Nerimb/DENZ-/main/utils/images/DENZ_BannerLogo-.png",
-        }}
-        
-        style={styles.logo}/>
-      </View>
-        
+
+      <Logo/>
+      
       <GooglePlacesAutocomplete
         styles={{
           container:{
@@ -67,10 +64,5 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 20,
     marginTop: 20,
-  },
-  logo: {
-    width: 100,
-    height: 100,
-    resizeMode: 'contain',
   },
 })

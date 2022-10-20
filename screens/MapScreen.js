@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -44,7 +44,6 @@ export default MapScreen
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    marginTop: 10,
   },
   map:{
     height: "50%",

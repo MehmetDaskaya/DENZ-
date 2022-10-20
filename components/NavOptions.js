@@ -68,9 +68,7 @@ const styles = StyleSheet.create({
     box:{
         backgroundColor: "grey",
         paddingHorizontal: 10,
-        alignItems: "center",
-        height:"50%",
-        justifyContent: "center",
+        height:"70%",
     },
     image:{
         width:120,

@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
-
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_APIKEY } from '@env';
 import { setDestination } from '../store/slices/navSlice';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
+
 import NavFavourites from './NavFavourites';
 
 const NavigateCard = () => {
@@ -16,7 +17,8 @@ const NavigateCard = () => {
   return (
     <SafeAreaView style={styles.container} >
       <Text style={styles.text} >Good Morning, Mehmet</Text>
-      <View style={styles.bottomArea}>
+      <View>
+
         <View>
           <GooglePlacesAutocomplete
             placeholder='Where from?'
@@ -41,8 +43,26 @@ const NavigateCard = () => {
             debounce={400}
           />
         </View>
+
         <NavFavourites/>
+
       </View>
+
+      <View style={styles.selectionContainer}>
+        <TouchableOpacity
+          style={styles.selectionBox}
+          onPress={() => navigation.navigate('RideOptionsCard')}
+          >
+            <FontAwesome name="car" size={16} color="white" />
+            <Text style={styles.icon}>Rides</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.selectionBox}>
+            <Ionicons name="fast-food-outline" size={16} color="white" />
+            <Text style={styles.icon}>Eats</Text>
+        </TouchableOpacity>
+      </View>
+
     </SafeAreaView>
   )
 }
@@ -56,15 +76,35 @@ const styles = StyleSheet.create({
   },
   text:{
     alignSelf: "center",
-    fontSize: 20,
-    marginVertical: 5,
+    fontSize: 18,
+    marginTop: 8,
   },
+  selectionContainer:{
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginTop: 10,
+  },
+  selectionBox:{
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: "black",
+    width: 80,
+    borderRadius: 50,
+    padding: 5,
+  },
+  icon:{
+    alignSelf: "center",
+    color: "white",
+  },
+
+
 })
 
 const toInputBoxStyles = StyleSheet.create({
   container:{
     backgroundColor: "white",
-    paddingTop: 20,
+    paddingTop: 12,
     flex:0,
   },
   textInput:{
