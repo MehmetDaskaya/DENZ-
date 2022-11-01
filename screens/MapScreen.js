@@ -5,6 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Map from '../components/Map';
 import NavigateCard from '../components/NavigateCard';
 import RideOptionsCard from '../components/RideOptionsCard';
+import SeaTripSelection from '../components/SeaTripSelection';
+import Payment from '../components/Payment';
 
 const MapScreen = () => {
   const Stack = createStackNavigator();
@@ -33,6 +35,21 @@ const MapScreen = () => {
                 headerShown: false,
               }}
               />
+
+          <Stack.Screen
+              name="SeaTripSelection"
+              component={SeaTripSelection}
+              options={{
+                headerShown: false,
+              }}
+              />
+          <Stack.Screen
+              name="Ödeme"
+              component={Payment}
+              options={{
+                headerShown: false,
+              }}
+              />          
         </Stack.Navigator>
       </View>
     </View>
