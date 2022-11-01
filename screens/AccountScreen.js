@@ -9,7 +9,6 @@ const AccountScreen = ({navigation}) => {
     auth
       .signOut()
       .then(() => {
-      console.log('User signed out successfully');
       navigation.navigate('SignInScreen');
     })
     .catch(error => {Alert.alert(error.message)});
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button:{
-    backgroundColor: 'blue',
+    backgroundColor: '#FF6347',
     padding: 10,
     borderRadius: 5,
     margin: 10,

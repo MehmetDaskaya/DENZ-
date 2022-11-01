@@ -29,7 +29,6 @@ const SignInScreen = ({navigation}) => {
     .signInWithEmailAndPassword(email, password)
     .then(userCredential => {
       const user = userCredential.user;
-      console.log('User signed in successfully', user.email);
       dispatch(setSignedIn(true));
     })
   };

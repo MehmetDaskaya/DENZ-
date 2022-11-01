@@ -59,12 +59,10 @@ const Map = () => {
             &key=${GOOGLE_MAPS_APIKEY}`
             ).then((res) => res.json())
             .then((data)=>{
-                console.log(origin);
-                console.log(dispatch(setTravelTimeInformation(data.rows[0].elements[0])));
-
+                dispatch(setTravelTimeInformation(data.rows[0].elements[0]));
                 dispatch(setInitialTravelInformation(data.rows[0].elements[0].distance.text));
                 dispatch(setInitialTravelDuration(data.rows[0].elements[0].duration.text));
-                console.log(dispatch(setEarthDistance(getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2))))
+                dispatch(setEarthDistance(getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2)));
                 
             });
         };

@@ -12,10 +12,6 @@ const SignUpScreen = ({navigation}) => {
 
   const handleSignUp = () => {
     auth.createUserWithEmailAndPassword(email, password)
-    .then(userCredential => {
-      const user = userCredential.user;
-      console.log('User created successfully', user);
-    })
     .catch(error => Alert.alert(error.message));
 
   };
