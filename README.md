@@ -1,2 +1,4 @@
 # DENZ-
-Uber like app
+Kişiselleştirilmiş Deniz Yolculuğunuz.
+
+Kurulum için Dokümantasyon klasörünü okuyunuz.
