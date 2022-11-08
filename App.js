@@ -5,7 +5,6 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { LogBox } from "react-native";
 import HomeScreen from "./screens/Home";
@@ -16,8 +15,6 @@ import SignUpScreen from "./screens/AuthenticationScreens/SignUp";
 import { store } from "./store/store";
 import { selectSignedIn } from "./store/slices/navSlice";
 
-import Splash from "./screens/Splash";
-
 const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -26,9 +23,6 @@ LogBox.ignoreAllLogs();
 
 const StackNavigator = () => {
   const signedIn = useSelector(selectSignedIn);
-  // if (signedIn) {
-  //   return <Splash />;
-  // }
 
   return (
     <>
@@ -75,12 +69,6 @@ const StackNavigator = () => {
 };
 
 const App = () => {
-  const getTabBarStyle = (route) => {
-    const routeName = getFocusedRouteNameFromRoute(route) ?? "Home";
-    let display = routeName === "SignInScreen" ? "none" : "flex";
-    return { display };
-  };
-
   return (
     <Provider store={store}>
       <SafeAreaProvider>

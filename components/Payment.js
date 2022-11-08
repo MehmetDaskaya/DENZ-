@@ -8,7 +8,7 @@ import {
   selectEarthDistance,
 } from "../store/slices/navSlice";
 import { useSelector } from "react-redux";
-import NavbarContainer from "./NavbarContainer";
+import NavbarContainer from "./navigation/NavbarContainer";
 import { FontAwesome } from "@expo/vector-icons";
 
 import styles from "./PaymentStyles";
@@ -37,7 +37,7 @@ const Payment = () => {
           <View style={styles.bodyRight}>
             <FontAwesome name="ship" size={24} color="white" />
             <Text> {earthDistance} km Deniz Yolculuğu</Text>
-            <Text> X dakika Deniz Yolculuğu</Text>
+            <Text> {newInformation} dakika Deniz Yolculuğu</Text>
           </View>
         </View>
         <View style={styles.bottomBody}>

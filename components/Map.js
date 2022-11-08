@@ -23,7 +23,7 @@ const Map = () => {
     if (!origin || !destination) return;
 
     mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
-      edgePadding: { top: 100, right: 100, bottom: 1000, left: 100 },
+      edgePadding: { top: 100, right: 100, bottom: 100, left: 100 },
     });
   }, [origin, destination]);
 
@@ -35,7 +35,7 @@ const Map = () => {
     const lat2 = destination?.location.lat;
     const lon2 = destination?.location.lng;
 
-    // To calculate crow fly distance between two points
+    // // To calculate crow fly distance between two points
     const getDistance = (lat1, lon1, lat2, lon2) => {
       var R = 6371; // Radius of the earth in km
       var dLat = deg2rad(lat2 - lat1); // deg2rad below
@@ -51,9 +51,13 @@ const Map = () => {
       return d;
     };
 
-    getDistance(lat1, lon1, lat2, lon2);
+    function deg2rad(deg) {
+      return deg * (Math.PI / 180);
+    }
 
-    // To calculate the shortest way between two points with GOOGLE DISTANCE MATRIX API
+    const getCoordsDistance = getDistance(lat1, lon1, lat2, lon2);
+
+    // // To calculate the shortest way between two points with GOOGLE DISTANCE MATRIX API
     const getTravelTime = async () => {
       await fetch(
         `https://maps.googleapis.com/maps/api/distancematrix/json?
@@ -70,47 +74,12 @@ const Map = () => {
           dispatch(
             setInitialTravelDuration(data.rows[0].elements[0].duration.text)
           );
-          dispatch(
-            setEarthDistance(getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2))
-          );
+          dispatch(setEarthDistance(getCoordsDistance.toFixed(2)));
         });
     };
 
     getTravelTime();
   }, [origin, destination, GOOGLE_MAPS_APIKEY]);
-
-  const getDistance = () => {
-    if (origin && destination) {
-      return (
-        <MapViewDirections
-          origin={origin.description}
-          destination={destination.description}
-          apikey={GOOGLE_MAPS_APIKEY}
-          strokeWidth={3}
-          strokeColor="black"
-        />
-      );
-    }
-  };
-
-  function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-    var R = 6371; // Radius of the earth in km
-    var dLat = deg2rad(lat2 - lat1); // deg2rad below
-    var dLon = deg2rad(lon2 - lon1);
-    var a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(deg2rad(lat1)) *
-        Math.cos(deg2rad(lat2)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var d = R * c; // Distance in km
-    return d.toFixed(1);
-  }
-
-  function deg2rad(deg) {
-    return deg * (Math.PI / 180);
-  }
 
   return (
     <MapView
@@ -120,8 +89,8 @@ const Map = () => {
       initialRegion={{
         latitude: origin.location.lat,
         longitude: origin.location.lng,
-        latitudeDelta: 0.005,
-        longitudeDelta: 0.005,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
       }}
     >
       {origin && destination && (

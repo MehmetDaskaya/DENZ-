@@ -3,9 +3,9 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import Map from "../components/Map";
-import NavigateCard from "../components/NavigateCard";
-import RideOptionsCard from "../components/RideOptionsCard";
-import SeaTripSelection from "../components/SeaTripSelection";
+import NavigateCard from "../components/navigation/NavigateCard";
+import RideOptionsCard from "../components/trip/RideOptionsCard";
+import SeaTripSelection from "../components/trip/SeaTripSelection";
 import Payment from "../components/Payment";
 
 const MapScreen = () => {
